@@ -1,32 +1,47 @@
-<div class="container top-banner" id="roundsContainer" style="display:none">
-    <h4 id="rounds" >Round 1</h4>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
    
-</div>
-<h4 id="timer" style="display: none;"></h4>
-<!--  <img src="Room_Day.png" class="background"> -->
-<audio loop autoplay>
-    <source src="soundtrack1.wav" type="audio/wav">
-</audio>
-<!-- <button id="playButton">Play</button> -->
-<div class="main">
-    <div class="submain">
-        <div id="title">Memory Game</div>
-        <div id="contents" style="display:none;">
-            <div id="correctImages"></div>
-            <h2 id="time-warning" style="display:none;">Time's Up!</h2>
-            <h4 id="wrong-warning" style="display:none;">Wrong option selected!</h4>
-            <h4 id="lost-warning" style="display:none;">You lost! Restart the game.</h4>
-            <h4 id="won-warning" style="display:none;">You won! Proceed to next round.</h4>
-            <button id="retry" style="display:none;" onclick="retryGame()">Retry</button>
-        </div>
-        <div id="buttons" class="align-center">
-            <button id="start-button">Press Start</button>
-            <h3 id="ready" style="display:none;" >Ready?</h3>
-            <h3 id="go" style="display:none;" >Go!</h3>    
-            <!-- <button onclick="revealCorrectImages()" style="display:none;" id="rvlimg">Reveal Correct Images</button> -->
-            <h4 id="allImages" style="display:none;">Select those images in next screen</h4>
-            <button id="next" style="display:none;" onclick="startGame()">Next</button>
+    <div class="container top-banner" id="roundsContainer" style="display:none">
+        <h4 id="rounds" >Round 1</h4>
+       
+    </div>
+    <h4 id="timer" style="display: none;"></h4>
+ <!--  <img src="Room_Day.png" class="background"> -->
+    <audio loop autoplay>
+        <source src="soundtrack1.wav" type="audio/wav">
+    </audio>
+    <!-- <button id="playButton">Play</button> -->
+    <div class="main">
+        <div class="submain">
+            <div id="title">Memory Game</div>
+            <div id="contents" style="display:none;">
+                <div id="correctImages"></div>
+                <h2 id="time-warning" style="display:none;">Time's Up!</h2>
+                <h4 id="wrong-warning" style="display:none;">Wrong option selected!</h4>
+                <h4 id="lost-warning" style="display:none;">You lost! Restart the game.</h4>
+                <h4 id="won-warning" style="display:none;">You won! Proceed to next round.</h4>
+                <button id="retry" style="display:none;" onclick="retryGame()">Retry</button>
+            </div>
+            <div id="buttons" class="align-center">
+                <button id="start-button">Press Start</button>
+                <h3 id="ready" style="display:none;" >Ready?</h3>
+                <h3 id="go" style="display:none;" >Go!</h3>    
+                <!-- <button onclick="revealCorrectImages()" style="display:none;" id="rvlimg">Reveal Correct Images</button> -->
+                <h4 id="allImages" style="display:none;">Select those images in next screen</h4>
+                <button id="next" style="display:none;" onclick="startGame()">Next</button>
+            </div>
         </div>
     </div>
-</div>
-<div class="bkg"></div>
+    <div class="bkg"></div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
