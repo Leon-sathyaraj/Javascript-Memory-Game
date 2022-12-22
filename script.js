@@ -50,3 +50,97 @@ window.onload = function(){
     const buttons = document.getElementById("buttons");
     const timerElement = document.querySelector("#timer");
     const title = document.querySelector("#title");
+    
+
+  let rounds = 0;
+  let roundThreshold = 2;
+  let gamePaused = false;
+  let selection = [];
+  let mapImages = {};
+  let timerTicking = false;
+  let countdown;
+
+  /* -- Timer Function creates counter -- */
+  function timerOn () {
+    timerElement.style.display = "flex";
+    let timeLeft = rounds > 1 ? 5 : 8;
+    countdown = setInterval(() => {
+      if(!gamePaused){
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+          timeWarning.style.display = "block";
+          buttons.style.display = "none";
+          retry.style.display = "block";
+          timerElement.style.display = "none";
+          revealAnswers();
+        } else {
+          timerElement.textContent = timeLeft ;
+          timeLeft--;
+        }
+      }
+      // else {
+      //   timerElement.textContent = "Paused";
+      // }
+    }, 1000);
+  }
+
+  
+
+  /* -- When is game is reseted some values are turned to their initial values -- */
+  function retryGame(){
+    rounds = 0;
+    // timerTicking=false;
+    // clearInterval(countdown);
+    startGame();
+  }
+
+  /* -- Some values need to be reinitialised to their initial values in the starting of each round -- */
+  function defaultValues(){
+    readyText.style.display = "none";
+    goText.style.display = "none";
+    next.style.display = "none";
+    retry.style.display = "none";
+    won.style.display = "none";
+    wrong.style.display = "none";
+    timeWarning.style.display = "none";
+    buttons.style.display = "flex";
+    allImages.style.display = "none";
+    lost.style.display = "none";
+    imagesContainer.textContent = '';
+    timerElement.style.display = "none";
+    selection = [];
+    gamePaused = false;
+    timerTicking=false;
+    clearInterval(countdown);
+    timerElement.textContent = "";
+    generateRandomSelections();
+  }
+
+  /* -- Start Function start the game by generating random images -- */
+  function startGame() {
+    round.textContent = "Round " + ++rounds;
+    defaultValues();
+    title.remove();
+    startButton.remove();
+    if(rounds === 1){
+      setTimeout(() => {
+        readyText.style.display = "block";
+        }, 500);
+    }
+      setTimeout(() => {
+      readyText.style.display = "none";
+      goText.style.display = "block";
+      }, rounds === 1 ? 3000 : 1000);
+
+      setTimeout(() => {
+        goText.style.display = "none";
+        contents.style.display = "flex";
+        revealCorrectImages();
+        }, 4500);
+        // if(!timerTicking){
+        //   timerOn();
+        //   timerTicking = true;
+        // }
+  }
+
+  let bckup = images;
