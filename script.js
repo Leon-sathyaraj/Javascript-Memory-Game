@@ -144,3 +144,96 @@ window.onload = function(){
   }
 
   let bckup = images;
+  let selectionBckup = [];
+
+  /* -- Generate random unique selections -- */
+  const generateRandomSelections = function () {
+    selectionBckup = []
+    bckup=images.slice(0, (rounds>=roundThreshold ? 13 : 8))
+    while(selection.length < 4){
+      let r = Math.floor(Math.random() * bckup.length);
+      if(selection.indexOf(bckup[r]) === -1) selection.push(bckup[r]);
+    }
+    selectionBckup = [...selection];
+ }
+
+  /* -- Reveal correct images on screen by using DOM manipulation method -- */
+  const revealCorrectImages = function () {
+    for (let i = 0; i <= 3; i++) {
+      const img = document.createElement("img");
+      img.src = selection[i];
+      selection.forEach((image) => imagesContainer.appendChild(img));
+    }
+    setTimeout(() => {
+      imagesContainer.textContent = '';
+      allImages.style.display = "block";
+      setTimeout(() => {
+        ShowAllImages();
+        }, 2000);
+      }, 5000);
+  };
+
+  /* -- Show all the options for user to select -- */
+  const ShowAllImages = function () {
+    allImages.style.display = "none";
+    timerOn();
+    for (let i = 0; i <= (rounds>=roundThreshold ? 11 : 7); i++) {
+      const img = document.createElement("img");
+      img.src=bckup[i];
+      imagesContainer.appendChild(img);
+      img.addEventListener("click", (e) => validate(e));
+      }   
+  }
+ 
+  /* -- To check the selected option is correct or not -- */
+  const validate = function (e) {
+    if(gamePaused) return;
+    let urlArray = e.target.src.split('/');
+    let src = "img/" + urlArray[urlArray.length - 1];
+    if(
+      selectionBckup.find(i => {
+        return i === src;
+      })
+    ){
+      e.target.classList.add('correct');
+      selectionBckup[selectionBckup.indexOf(src)] = "";
+      selectionBckup = selectionBckup.filter(a => a !== "");
+      if(selectionBckup.length === 0) {
+        won.style.display = "block";
+        next.style.display = "block";
+        
+        gamePaused=true;
+      }
+    }else{
+      gamePaused=true;
+      e.target.classList.add('incorrect');
+      rounds=0;
+      timerElement.textContent = "";
+      wrong.style.display = "block";
+      setTimeout(() => {
+        retry.style.display = "block";
+        lost.style.display = "block";
+        revealAnswers();
+        }, 2000);
+    }
+  }
+
+  /* -- Reveal answers in the end of the round -- */
+  const revealAnswers = function () {
+    imagesContainer.textContent= '';
+    for (let i = 0; i <= 3; i++) {
+      const img = document.createElement("img");
+      img.src = selection[i];
+      selection.forEach((image) => imagesContainer.appendChild(img));
+    }
+  }
+
+
+startButton.addEventListener("click", startGame);
+
+//function to show round
+function rvlround() {
+  document.getElementById('roundsContainer').style.display = "flex";
+}
+startButton.addEventListener("click", rvlround);
+ 
