@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    /* font-family: 'Poppins', sans-serif; */
+ }
+ :root{
+    --theme: #0275d8;
+    --wrong: rgb(221, 49, 49);
+    --correct: #50C878;
+ }
+
+ html, body{
+    /* background: repeating-linear-gradient(0deg, #edebeb, #d9d9d9 15px, #e1e1e1 15px, #edebeb 16px); */
+ }
+ .bkg{
+    background-image: url(/img/bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    backdrop-filter: blur(10px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+ }
+ .bkg:after{
+    background: repeating-linear-gradient(0deg, #edebeb, #d9d9d9 15px, #e1e1e1 15px, #edebeb 16px);
+ }
+
+ body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+#allImages img{
+    cursor: pointer;
+}
+.correct{
+    background: var(--correct);
+    border-radius: 50%;
+    padding: 5px;
+}
+.incorrect{
+  background: var(--wrong);
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15px;
+    font-size: 20px;
+}
+.container.top-banner{
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    background-color: transparent;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#start-button{
+    
+    /* font-family: 'Press Start 2P', cursive; */
+}
+#start-button, #retry, #next{
+    text-transform: uppercase;
+    width: auto;
+    padding: 10px;
+    border: 2px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-family: 'Press Start 2P', cursive; 
+    -webkit-text-stroke: 0.8px aquamarine;
+
+}
+#start-button:hover, #retry:hover, #next:hover{
+    
+    background: linear-gradient(144deg, black, #eb87ac,#ff00eb, #ff0078, black);
+    color: #fff;
+    border: 2px solid var(--theme);
+}
+#timer{
+    background-image: url(/img/clock.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+    /* right: 15px; */
+    top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: clock-scale 0.6s;
+    animation-iteration-count: infinite;
+    
+}
+@keyframes clock-scale {
+    from {transform:scale(1);}
+    to {transform:scale(1.05);}
+  }
+.main{
+    width: 100%;
+    /* max-width: 700px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#contents, #buttons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap:20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.align-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#correctImages{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap:5px;
+    flex-wrap: wrap;
+}
+#correctImages img{
+    height: 65px;
+    cursor: pointer;
+}
+.submain{
+    width: 100%;
+    /* border: 2px solid var(--theme);
+    background-color: #fff; */
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+}
+#ready, #go, #allImages{
+    font-size: 2rem;
+    color: aqua;
+    -webkit-text-stroke: 1px #ff2fd0;
+}
+#time-warning{
+    color: red;
+}
+#wrong-warning{
+    color:var(--wrong);
+}
+#won-warning{
+    color: var(--correct);
+}
+#title{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 4rem;
+    color: var(--theme);
+    background: linear-gradient(to right, red, blue, red, blue);
+    -webkit-text-stroke: 1px greenyellow;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: bolder;
+}
+#allImages{
+    max-width: 60%;
+}
