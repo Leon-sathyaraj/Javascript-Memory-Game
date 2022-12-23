@@ -150,7 +150,7 @@ let images = [
   /* -- Generate random unique selections -- */
   const generateRandomSelections = function () {
     selectionBckup = []
-    bckup=images.slice(0, (rounds>=roundThreshold ? 13 : 8))
+    bckup=images.slice(0, (rounds>=roundThreshold ? 11 : 7))
     while(selection.length < 4){
       var r = Math.floor(Math.random() * bckup.length);
       if(selection.indexOf(bckup[r]) === -1) selection.push(bckup[r]);

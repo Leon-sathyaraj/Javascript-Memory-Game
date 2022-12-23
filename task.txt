@@ -1,0 +1,18 @@
+ the requirements of the game are below:
+
+1) create a start button
+2) once start button is clicked, there will be two text that appears one after the other
+for 1.5 seconds. 'ready' and 'go!
+3) randomize 8 images and backend will pick 4 to show players
+4) the images will be shown for 5 seconds before it disappears
+5) another text and a 3 seconds delay before showing the 8 images
+6) players will choose the 4 correct images out of 8 images .
+if correct, tell player he won and give option to go next round and repeat 2)
+7)next round will repeat from step 2
+9) if option is wrong , player lose the round and reveal the answer.
+ give option to restart game aka go back to step 2.
+ 
+10) if the time has reached 0, show the text ' time's up!' 
+and delay is for 2 seconds then reveal the correct answer
+
+11) after winning for 5 rounds, extend the options of 8 to 12 images to pick from
